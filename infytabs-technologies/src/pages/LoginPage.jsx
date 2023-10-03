@@ -25,9 +25,11 @@ export default function LoginPge() {
     const handleLogin = async () => {
         const payload = { email, password };
         if(email && password){
+
             try {
-                const data = await axios.post(`http://localhost:17000/auth/login`,payload);
-                if(data.statusText == "OK"){
+                const data = await axios.post(`https://glorious-sheath-dress-fawn.cyclic.cloud/auth/login`,payload);
+                // console.log(data,"dsjdjasjndajs");
+                if(data.status == 200){
                     console.log(data.data);
                     localStorage.setItem("token",JSON.stringify(data.data.token));
                     navigate("/home");

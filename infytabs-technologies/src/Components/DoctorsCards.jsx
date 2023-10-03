@@ -28,10 +28,7 @@ const DoctorCards = ({el}) => {
             <CardFooter>
                 <ButtonGroup spacing='2'>
                     <Button variant='solid' colorScheme='blue'>
-                        Buy now
-                    </Button>
-                    <Button variant='ghost' colorScheme='blue'>
-                        Add to cart
+                        Book now
                     </Button>
                 </ButtonGroup>
             </CardFooter>

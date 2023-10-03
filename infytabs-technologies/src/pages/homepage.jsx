@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { GridItem, SimpleGrid } from "@chakra-ui/react";
+import { GridItem, Heading, SimpleGrid } from "@chakra-ui/react";
 import DoctorCards from "../Components/DoctorsCards";
 
 const HomePage = () => {
     const [data,setData] = useState([]);
+    const [auth,setAuth] = useState(JSON.parse(localStorage.getItem("token")) || false);
 
     const getData = async () => {
         try {
-            const fetchedData = await axios.get(`http://localhost:17000/doctors/alldoctors`,{
+            const fetchedData = await axios.get(`https://glorious-sheath-dress-fawn.cyclic.cloud/doctors/alldoctors`,{
                 headers : {
                     Authorization : `Bearer ${JSON.parse(localStorage.getItem("token"))}`
                 }
@@ -28,13 +29,13 @@ const HomePage = () => {
     console.log(data);
     return(
         <>
-          <SimpleGrid columns={[1,2,2,3,3]} justifyContent={"center"} alignItems={"center"} margin={"auto"} >
+        {auth ?  <SimpleGrid columns={[1,2,2,3,3]} justifyContent={"center"} alignItems={"center"} margin={"auto"} >
             {data?.map((el,i) => (
                 <GridItem key={i} margin={"auto"}>
                     <DoctorCards el={el}/>
                 </GridItem>
             ))}
-          </SimpleGrid>
+          </SimpleGrid>: <Heading mt={"150px"}>Please Login</Heading>}
         </>
     )
 }
