@@ -31,7 +31,7 @@ export default function SignupPage() {
         const payload = {name,email,password,profile_url,mobile_no};
         if(name && email && password && profile_url && mobile_no){
             try {
-                const data = await axios.post(`https://glorious-sheath-dress-fawn.cyclic.cloud/auth/register`,payload);
+                const data = await axios.post(`${process.env.REACT_APP_URL}/auth/register`,payload);
                 if(data.status == 200){
                     alert("User registerd successfully");
                 }

@@ -9,7 +9,7 @@ const HomePage = () => {
 
     const getData = async () => {
         try {
-            const fetchedData = await axios.get(`https://glorious-sheath-dress-fawn.cyclic.cloud/doctors/alldoctors`,{
+            const fetchedData = await axios.get(`${process.env.REACT_APP_URL}/doctors/alldoctors`,{
                 headers : {
                     Authorization : `Bearer ${JSON.parse(localStorage.getItem("token"))}`
                 }

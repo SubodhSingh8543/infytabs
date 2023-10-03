@@ -27,7 +27,7 @@ export default function LoginPge() {
         if(email && password){
 
             try {
-                const data = await axios.post(`https://glorious-sheath-dress-fawn.cyclic.cloud/auth/login`,payload);
+                const data = await axios.post(`${process.env.REACT_APP_URL}/auth/login`,payload);
                 // console.log(data,"dsjdjasjndajs");
                 if(data.status == 200){
                     console.log(data.data);
